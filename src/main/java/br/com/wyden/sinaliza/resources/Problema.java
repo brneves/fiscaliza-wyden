@@ -1,12 +1,18 @@
 package br.com.wyden.sinaliza.resources;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Entity;
 import java.io.Serializable;
 
 @Entity
 public class Problema implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final Long serialVersionUID = 1L;
+
+    public Problema(){}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +25,15 @@ public class Problema implements Serializable {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getProblema() {
         return problema;
+    }
+
+    public void setProblema(String problema) {
+        this.problema = problema;
     }
 }
