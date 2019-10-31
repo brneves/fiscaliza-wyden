@@ -10,10 +10,6 @@ import java.io.Serializable;
 @Entity
 public class Problema implements Serializable {
 
-    private static final Long serialVersionUID = 1L;
-
-    public Problema(){}
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

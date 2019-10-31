@@ -1,5 +1,6 @@
 package br.com.wyden.sinaliza.services;
 
+import br.com.wyden.sinaliza.exceptions.ObjectNotFoundException;
 import br.com.wyden.sinaliza.repository.UsuarioRepository;
 import br.com.wyden.sinaliza.resources.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,10 @@ public class UsuarioService {
 
     public Usuario get(Long id){
         Optional<Usuario> obj = repository.findById(id);
-        return obj.orElse(null);
+        return obj.orElseThrow(
+                () -> new ObjectNotFoundException("Usuário não encontrado")
+        );
+//        return obj.orElse(null);
     }
 
     public Usuario create(Usuario obj){

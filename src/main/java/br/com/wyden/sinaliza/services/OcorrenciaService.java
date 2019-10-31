@@ -1,5 +1,6 @@
 package br.com.wyden.sinaliza.services;
 
+import br.com.wyden.sinaliza.exceptions.ObjectNotFoundException;
 import br.com.wyden.sinaliza.repository.OcorrenciaRepository;
 import br.com.wyden.sinaliza.resources.Ocorrencia;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,10 @@ public class OcorrenciaService {
 
     public Ocorrencia get(Long id){
         Optional<Ocorrencia> obj = repository.findById(id);
-        return obj.orElse(null);
+        return obj.orElseThrow(
+            () -> new ObjectNotFoundException("Ocorrência não encontrada")
+        );
+//        return obj.orElse(null);
     }
 
     public Ocorrencia create(Ocorrencia obj){

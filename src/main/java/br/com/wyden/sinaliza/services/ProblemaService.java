@@ -1,5 +1,6 @@
 package br.com.wyden.sinaliza.services;
 
+import br.com.wyden.sinaliza.exceptions.ObjectNotFoundException;
 import br.com.wyden.sinaliza.repository.ProblemaRepository;
 import br.com.wyden.sinaliza.resources.Problema;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,10 @@ public class ProblemaService {
 
     public Problema get(Long id){
         Optional<Problema> obj = repository.findById(id);
-        return obj.orElse(null);
+        return obj.orElseThrow(
+                () -> new ObjectNotFoundException("Problema não encontrado")
+        );
+//        return obj.orElse(null);
     }
 
     public Problema create(Problema obj){
