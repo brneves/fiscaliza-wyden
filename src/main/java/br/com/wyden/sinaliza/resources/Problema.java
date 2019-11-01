@@ -17,6 +17,17 @@ public class Problema implements Serializable {
     @Column(name = "problema", nullable = false)
     private String problema;
 
+    @Column(name = "icone")
+    private String icone;
+
+    public String getIcone() {
+        return icone;
+    }
+
+    public void setIcone(String icone) {
+        this.icone = icone;
+    }
+
     public Long getId() {
         return id;
     }
