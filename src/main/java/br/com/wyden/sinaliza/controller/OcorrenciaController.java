@@ -4,6 +4,7 @@ import br.com.wyden.sinaliza.resources.Ocorrencia;
 import br.com.wyden.sinaliza.services.OcorrenciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -16,6 +17,13 @@ public class OcorrenciaController {
 
     @Autowired
     private OcorrenciaService service;
+
+    @RequestMapping(value = "/")
+    public String index(Model model){
+        List<Ocorrencia> ocorrencias = service.getAll();
+        model.addAttribute("ocorrencias", ocorrencias);
+        return "index";
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Ocorrencia>> getAll(){
