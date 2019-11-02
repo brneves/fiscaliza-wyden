@@ -29,11 +29,20 @@ public class UsuarioController {
         return ResponseEntity.ok().body(obj);
     }
 
+    /*
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> create(@RequestBody Usuario obj){
         obj = service.create(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
+    }
+     */
+
+    @RequestMapping(method = RequestMethod.POST)
+    public boolean create(@RequestBody Usuario obj){
+        obj = service.create(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return true;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
