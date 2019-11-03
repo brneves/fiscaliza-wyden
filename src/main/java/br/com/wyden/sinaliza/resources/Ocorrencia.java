@@ -18,14 +18,17 @@ public class Ocorrencia implements Serializable {
     @JoinColumn(name = "problema_id")
     private Problema problema;
 
-    @Column(name = "coordenada_x", nullable = false)
-    private String coordenada_x;
+    @Column(name = "latitude", nullable = false)
+    private String latitude;
 
-    @Column(name = "coordenada_y", nullable = false)
-    private String coordenada_y;
+    @Column(name = "longitude", nullable = false)
+    private String longitude;
 
     @Column(name = "foto")
     private String foto;
+
+    @Column(name = "descricao")
+    private String descricao;
 
     @Column(name = "data_cadastro", nullable = false)
     private String dataCadastro;
@@ -57,20 +60,20 @@ public class Ocorrencia implements Serializable {
         this.problema = problema;
     }
 
-    public String getCoordenada_x() {
-        return coordenada_x;
+    public String getLatitude() {
+        return latitude;
     }
 
-    public void setCoordenada_x(String coordenada_x) {
-        this.coordenada_x = coordenada_x;
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
     }
 
-    public String getCoordenada_y() {
-        return coordenada_y;
+    public String getLongitude() {
+        return longitude;
     }
 
-    public void setCoordenada_y(String coordenada_y) {
-        this.coordenada_y = coordenada_y;
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public String getFoto() {
@@ -79,6 +82,14 @@ public class Ocorrencia implements Serializable {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public String getDataCadastro() {

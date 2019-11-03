@@ -1,3 +1,7 @@
 .logado {
     display: none;
 }
+
+.modal-header {
+    display: block !important;
+}

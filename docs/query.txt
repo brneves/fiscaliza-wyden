@@ -1,0 +1,4 @@
+INSERT INTO problema VALUES (null, "icon-buraco", "Buraco no asfalto");
+INSERT INTO problema VALUES (null, "icon-faixa", "Faixa de Pedestre");
+INSERT INTO problema VALUES (null, "icon-acessibilidade", "Faixa de Acessibilidade");
+INSERT INTO problema VALUES (null, "icon-semáforo", "Semáforo com defeito");
