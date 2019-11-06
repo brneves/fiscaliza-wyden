@@ -5,3 +5,14 @@
 .modal-header {
     display: block !important;
 }
+
+header.masthead .header-content h1 {
+    color: #000 !important;
+}
+
+.btn-outline {
+    color: #000;
+    border-color: #666 !important;
+}
+
+#mapid { height: 180px; }

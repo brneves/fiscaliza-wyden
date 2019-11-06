@@ -89,5 +89,9 @@ $(document).ready(function(){
         return false;
     })
 
+    function f() {
+        
+    }
+    
     // /CADASTRO DE OCORRÊNCIA
 });
