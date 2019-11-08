@@ -27,9 +27,21 @@
     <link rel="stylesheet" href="/css/new-age.css">
     <link rel="stylesheet" href="/css/fiscaliza.css">
 
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="/vendor/jquery-easing/jquery.easing.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="/js/new-age.min.js"></script>
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
 
+    <!-- fiscaliza.js -->
+    <script src="/js/fiscaliza.js"></script>
 
     <style>
         html, body {
@@ -37,8 +49,8 @@
             margin: 0;
         }
         #map {
-            width: 600px;
-            height: 400px;
+            width: 1100px;
+            height: 600px;
         }
     </style>
 
@@ -114,6 +126,7 @@
                 <div class="logado">
                     <h2 class="section-heading">Bem-vindo</h2>
                     <p>Informe as ocorrências que desejar para alimentar nossos dados</p>
+                    <div id="sucesso" class="alert alert-success"></div>
                     <button type="button" data-toggle="modal" data-target="#modal" class="btn btn-primary">Informar
                         ocorrência
                     </button>
@@ -129,14 +142,13 @@
         <form action="" class="ocorrencia" id="ocorrencia">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Cadastrar Ocorrência</h4>
                 </div>
                 <div class="modal-body">
                     <div class="alert " id="mensagens"></div>
                     <div class="form-group">
-                        <select name="problemas_id" id="problema_id" class="form-control">
+                        <select name="problema_id" id="problema_id" class="form-control">
                             <option value="" selected disabled>Selecione o problema</option>
                         </select>
                     </div>
@@ -155,7 +167,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Salvar</button>
+                    <input type="submit" class="btn btn-primary" value="Enviar">
                 </div>
             </div><!-- /.modal-content -->
         </form>
@@ -175,39 +187,16 @@
                 <div class="container-fluid">
                     <div id='map'></div>
 
-                    <script>
-                        var map = L.map('map').setView([51.5, -0.09], 13);
 
-                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                        }).addTo(map);
 
-                        var LeafIcon = L.Icon.extend({
-                            options: {
-                                shadowUrl: 'leaf-shadow.png',
-                                iconSize:     [38, 95],
-                                shadowSize:   [50, 64],
-                                iconAnchor:   [22, 94],
-                                shadowAnchor: [4, 62],
-                                popupAnchor:  [-3, -76]
-                            }
-                        });
 
-                        var greenIcon = new LeafIcon({iconUrl: 'leaf-green.png'}),
-                            redIcon = new LeafIcon({iconUrl: 'leaf-red.png'}),
-                            orangeIcon = new LeafIcon({iconUrl: 'leaf-orange.png'});
-
-                        L.marker([51.5, -0.09], {icon: greenIcon}).bindPopup("I am a green leaf.").addTo(map);
-                        L.marker([51.495, -0.083], {icon: redIcon}).bindPopup("I am a red leaf.").addTo(map);
-                        L.marker([51.49, -0.1], {icon: orangeIcon}).bindPopup("I am an orange leaf.").addTo(map);
-
-                    </script>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+<!--
 <section class="cta">
     <div class="cta-content">
         <div class="container">
@@ -217,7 +206,9 @@
     </div>
     <div class="overlay"></div>
 </section>
+-->
 
+<!--
 <section class="contact bg-primary" id="contact">
     <div class="container">
         <h2>We
@@ -242,36 +233,13 @@
         </ul>
     </div>
 </section>
+-->
 
 <footer>
     <div class="container">
-        <p>&copy; Your Website 2019. All Rights Reserved.</p>
-        <ul class="list-inline">
-            <li class="list-inline-item">
-                <a href="#">Privacy</a>
-            </li>
-            <li class="list-inline-item">
-                <a href="#">Terms</a>
-            </li>
-            <li class="list-inline-item">
-                <a href="#">FAQ</a>
-            </li>
-        </ul>
+        <p>&copy; Copyright 2019. Todos os direitos reservados.</p>
     </div>
 </footer>
-
-<!-- Bootstrap core JavaScript -->
-<script src="/vendor/jquery/jquery.min.js"></script>
-<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Plugin JavaScript -->
-<script src="/vendor/jquery-easing/jquery.easing.js"></script>
-
-<!-- Custom scripts for this template -->
-<script src="/js/new-age.min.js"></script>
-
-<!-- fiscaliza.js -->
-<script src="/js/fiscaliza.js"></script>
 
 </body>
 

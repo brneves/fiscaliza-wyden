@@ -10,9 +10,28 @@ header.masthead .header-content h1 {
     color: #000 !important;
 }
 
+#sucesso {
+    display: none;
+}
+
 .btn-outline {
     color: #000;
     border-color: #666 !important;
 }
 
 #mapid { height: 180px; }
+
+
+@media (max-width: 400px) {
+    #map {
+        width: 300px !important;
+        height: 300px !important;
+    }
+}
+
+@media (max-width: 900px){
+    #map {
+        width: 700px !important;
+        height: 300px !important;
+    }
+}

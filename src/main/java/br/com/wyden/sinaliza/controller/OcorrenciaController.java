@@ -37,8 +37,9 @@ public class OcorrenciaController {
         return ResponseEntity.ok().body(obj);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<Void> create(@RequestBody Ocorrencia obj){
+        //https://respostas.guj.com.br/17537-salvar-dados-utilizando-chave-estrangeira
         obj = service.create(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
