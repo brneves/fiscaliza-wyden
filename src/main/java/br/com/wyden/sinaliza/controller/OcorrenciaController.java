@@ -1,7 +1,12 @@
 package br.com.wyden.sinaliza.controller;
 
+import br.com.wyden.sinaliza.repository.ProblemaRepository;
+import br.com.wyden.sinaliza.repository.UsuarioRepository;
 import br.com.wyden.sinaliza.resources.Ocorrencia;
+import br.com.wyden.sinaliza.resources.Problema;
+import br.com.wyden.sinaliza.resources.Usuario;
 import br.com.wyden.sinaliza.services.OcorrenciaService;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -17,6 +22,12 @@ public class OcorrenciaController {
 
     @Autowired
     private OcorrenciaService service;
+
+    @Autowired
+    private UsuarioRepository ur;
+
+    @Autowired
+    private ProblemaRepository pr;
 
     @RequestMapping(value = "/")
     public String index(Model model){
@@ -39,7 +50,6 @@ public class OcorrenciaController {
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<Void> create(@RequestBody Ocorrencia obj){
-        //https://respostas.guj.com.br/17537-salvar-dados-utilizando-chave-estrangeira
         obj = service.create(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();

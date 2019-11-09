@@ -62,8 +62,12 @@ $(document).ready(function(){
         var dataAtual = new Date();
 
         var ocorrencia = {
-            usuario: parseInt($("#usuario_id").val(), 10),
-            problema: parseInt($("#problema_id").val(), 10),
+            usuario: {
+                "id": $("#usuario_id").val()
+            },
+            problema: {
+                "id": $("#problema_id").val()
+            },
             latitude: $("#latitude").val(),
             longitude: $("#longitude").val(),
             descricao: $("#descricao").val(),

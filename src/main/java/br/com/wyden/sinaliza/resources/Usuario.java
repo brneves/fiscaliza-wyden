@@ -1,7 +1,11 @@
 package br.com.wyden.sinaliza.resources;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Usuario implements Serializable {
@@ -50,4 +54,29 @@ public class Usuario implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    // ALTERAÇÕES A PARTIR DAQQUI
+    /*
+    public Usuario(){}
+
+    public Usuario(Long id, String nome, String email, String senha){
+        super();
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+    }
+
+    @OneToMany(mappedBy = "usuario", orphanRemoval = true)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private List<Ocorrencia> ocorrencias = new ArrayList<Ocorrencia>();
+
+    public List<Ocorrencia> getOcorrencias() {
+        return ocorrencias;
+    }
+
+    public void setOcorrencias(List<Ocorrencia> ocorrencias) {
+        this.ocorrencias = ocorrencias;
+    }
+     */
 }

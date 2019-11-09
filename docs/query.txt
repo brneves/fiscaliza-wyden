@@ -1,4 +1,5 @@
-INSERT INTO problema VALUES (null, "icon-buraco", "Buraco no asfalto");
-INSERT INTO problema VALUES (null, "icon-faixa", "Faixa de Pedestre");
-INSERT INTO problema VALUES (null, "icon-acessibilidade", "Faixa de Acessibilidade");
-INSERT INTO problema VALUES (null, "icon-semáforo", "Semáforo com defeito");
+INSERT INTO `problema` (`id`, `icone`, `problema`) VALUES
+(1, 'buraco', 'Buraco no asfalto'),
+(2, 'onibus', 'Problema na parada de ônibus'),
+(3, 'acessibilidade', 'Falta de Acessibilidade'),
+(4, 'semaforo', 'Semáforo com defeito');

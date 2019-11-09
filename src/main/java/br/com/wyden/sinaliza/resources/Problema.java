@@ -1,11 +1,11 @@
 package br.com.wyden.sinaliza.resources;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Entity;
+import org.hibernate.annotations.Cascade;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Problema implements Serializable {
@@ -43,4 +43,30 @@ public class Problema implements Serializable {
     public void setProblema(String problema) {
         this.problema = problema;
     }
+
+    //ALTERAÇÕES A PARTIR DAQUI
+    /*
+    public Problema(){
+
+    }
+
+    public Problema(Long id, String problema, String icone){
+        super();
+        this.id = id;
+        this.problema = problema;
+        this.icone = icone;
+    }
+
+    @OneToMany(mappedBy = "problema", orphanRemoval = true)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private List<Ocorrencia> ocorrencias = new ArrayList<Ocorrencia>();
+
+    public List<Ocorrencia> getOcorrencias() {
+        return ocorrencias;
+    }
+
+    public void setOcorrencias(List<Ocorrencia> ocorrencias) {
+        this.ocorrencias = ocorrencias;
+    }
+     */
 }
