@@ -92,61 +92,54 @@ $(document).ready(function(){
         });
         return false;
     })
-
-    //POPULAR OS PONTOS NO MAPA
-    // function populaMapa(longitude, latitude, icone, descricao) {
-    //     console.log(longitude, latitude, icone, descricao);
-    //     L.marker([latitude, longitude], {icon: icone}).bindPopup(descricao).addTo(map);
-    // }
     
     // /CADASTRO DE OCORRÊNCIA
 
-
-    //GERANDO MAPA
-    var map = L.map('map').setView([-2.5522755, -44.2434229], 11);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    var LeafIcon = L.Icon.extend({
-        options: {
-            shadowUrl: '../img/sombra.png',
-            iconSize:     [75, 100],
-            shadowSize:   [50, 64],
-            iconAnchor:   [22, 94],
-            shadowAnchor: [4, 62],
-            popupAnchor:  [-3, -76]
-        }
-    });
-
-    var onibus = new LeafIcon({iconUrl: '../img/onibus.png'}),
-        acessibilidade = new LeafIcon({iconUrl: '../img/acessibilidade.png'}),
-        buraco = new LeafIcon({iconUrl: '../img/buraco.png'}),
-        semaforo = new LeafIcon({iconUrl: '../img/semaforo.png'});
-
-        L.marker([-2.5004603, -44.276314199999995], {icon: onibus}).bindPopup("Parada de ônibus com defeito.").addTo(map);
-        L.marker([-2.502297, -44.270685], {icon: semaforo}).bindPopup("Semáforo com defeito, apagado.").addTo(map);
-        L.marker([-2.506978, -44.265632], {icon: acessibilidade}).bindPopup("Falta de acessibilidade na rua.").addTo(map);
-
-    //BUSCA OCORRÊNCIAS
-    // L.marker([])
+    // //BUSCA OCORRÊNCIAS E MONTA ARRAY COM LOCALIZAÇÕES
+    locais = [];
     $.ajax({
         type: "GET",
         url: "/ocorrencias",
         success: function (ocorrencias) {
-            ocorrencias.forEach(function (ocorrencia, indice) {
-                // console.log(ocorrencia);
-                // L.marker([ocorrencia.latitude, ocorrencia.longitude], {icon: ocorrencia.problema.icone}).bindPopup(ocorrencia.descricao).addTo(map);
-            })
-        }
-    });
-    // $.get("http://localhost:8080/ocorrencias", function (data) {
-    //     console.log(data);
-    //     $.each(data, function (i, d) {
-    //         console.log(d.latitude, d.longitude, d.problema.icone, d.descricao);
-    //         L.marker([d.latitude, d.longitude], {icon: d.problema.icone}).bindPopup(d.descricao).addTo(map);
-    //     })
-    // });
 
+            var i = 0;
+            ocorrencias.forEach(function (ocorrencia, indice) {
+                locais[i] = [ocorrencia.latitude, ocorrencia.longitude, ocorrencia.problema.icone, ocorrencia.descricao]
+                i++;
+            })
+        },
+    });
+
+
+    //GERANDO O MAPA
+    var map;
+    var centerPos = new google.maps.LatLng(-2.5522755, -44.2434229);
+    var zoomLevel = 12;
+    function initialize() {
+        var mapOptions = {
+            center: centerPos,
+            zoom: zoomLevel
+        };
+        map = new google.maps.Map( document.getElementById("mapa"), mapOptions );
+
+        for (i = 0; i < locais.length; i++) {
+
+            // var conteudoMapa = '<h2>' + locais[i][3] + '<h2>' + '<p><small><strong>Latitude:</strong> ' + locais[i][0] + '</small></p>' + '<p><small><strong>Longitude: </strong>' + locais[i][[1]] + '</small></p>'
+
+            // var infoJanela = new google.maps.InfoWindow({ content: conteudoMapa });
+
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locais[i][0], locais[i][1]),
+                title: locais[i][3],
+                map: map,
+                icon: locais[i][2]
+            });
+
+            // marker.addListener('click', function () {
+            //     infoJanela.open(map, marker);
+            // })
+        }
+
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
 });
