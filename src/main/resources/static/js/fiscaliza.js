@@ -8,7 +8,7 @@ $(document).ready(function(){
         var usuarioObj = JSON.stringify(usuario);
 
         $.ajax({
-            url: "http://localhost:8080/usuarios",
+            url: "/usuarios",
             data: usuarioObj,
             type: "POST",
             dataType: 'json',
@@ -47,7 +47,7 @@ $(document).ready(function(){
     // /GEOLOCALIZAÇÃO
 
     // BUSCAR PROBLEMAS
-    $.get("http://localhost:8080/problemas", function (data) {
+    $.get("/problemas", function (data) {
         var selectProblema = $('#problema_id');
         $.each(data, function (i, d) {
             $('<option>').val(d.id).text(d.problema).appendTo(selectProblema);
@@ -77,7 +77,8 @@ $(document).ready(function(){
         var ocorrenciaObj = JSON.stringify(ocorrencia);
 
         $.ajax({
-            url: "http://localhost:8080/ocorrencias",
+            url: "" +
+                "/ocorrencias",
             data: ocorrenciaObj,
             type: "POST",
             dataType: 'json',
