@@ -1,5 +1,5 @@
 INSERT INTO `problema` (`id`, `icone`, `problema`) VALUES
-(1, 'buraco', 'Buraco no asfalto'),
-(2, 'onibus', 'Problema na parada de ônibus'),
-(3, 'acessibilidade', 'Falta de Acessibilidade'),
-(4, 'semaforo', 'Semáforo com defeito');
+(1, 'img/buraco.png', 'Buraco no asfalto'),
+(2, 'img/onibus.png', 'Problema na parada de ônibus'),
+(3, 'img/acessibilidade.png', 'Falta de Acessibilidade'),
+(4, 'img/semaforo.png', 'Semáforo com defeito');
